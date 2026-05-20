@@ -1,6 +1,6 @@
 # Worklog — Deliberately Vulnerable Django App
 
-A minimal hour-tracking Django app built for the **Cybersecurity Base —
+A minimal hour-tracking Django app built for the **Cybersecurity Base -
 Course Project I** (University of Helsinki). It contains five intentional,
 exploitable security flaws drawn from the **OWASP Top 10 (2021)**, each
 paired with the corresponding fix as a commented-out block in the same file.
@@ -32,7 +32,7 @@ Every flaw is documented inline like:
 
 To switch a flaw to its fixed form, open the file, comment out the
 vulnerable block, and uncomment the fix block. No branches or git tags
-are used — both forms always live side-by-side in the same file.
+are used - both forms always live side-by-side in the same file.
 
 ## Installation
 
@@ -64,7 +64,7 @@ Useful URLs:
 
 > The numbered sections below are filled in as each flaw is introduced.
 
-### Reproducing Flaw 1 — A01 Broken Access Control (IDOR)
+### Reproducing Flaw 1 - A01 Broken Access Control (IDOR)
 
 The `entry_detail` and `entry_edit` views in `tracker/views.py` look up a
 `TimeEntry` by primary key with no ownership check. Any logged-in user can
@@ -104,7 +104,7 @@ form pre-filled with Alice's data).
 Screenshot suggestion: `flaw-1-after-404.png` (Bob requesting `/1/`,
 seeing 404).
 
-### Reproducing Flaw 2 — A02 Cryptographic Failures
+### Reproducing Flaw 2 - A02 Cryptographic Failures
 
 The `Profile.set_pin` / `Profile.check_pin` methods in `tracker/models.py`
 store the user's secondary PIN as **cleartext** in the database. The PIN
@@ -143,7 +143,7 @@ untouched — only this parallel PIN field is broken on purpose.
    `/<id>/delete/` still works with the original PIN value. →
    `flaw-2-after-sqlite.png`
 
-### Reproducing Flaw 3 — A03 Injection (SQL injection)
+### Reproducing Flaw 3 - A03 Injection (SQL injection)
 
 The search filter on the entry list (`entry_list` in `tracker/views.py`)
 builds its SQL with `cursor.execute(f"... LIKE '%{query}%' ...")` —
@@ -183,7 +183,7 @@ the SQL string.
    The list is empty: the ORM treats the payload as literal text and
    nothing matches. → `flaw-3-after-inject.png`
 
-### Reproducing Flaw 4 — A05 Security Misconfiguration
+### Reproducing Flaw 4 - A05 Security Misconfiguration
 
 Three production-unsafe defaults are active in `worklog/settings.py` at
 the same time: `DEBUG = True`, `ALLOWED_HOSTS = ['*']`, and the
@@ -238,7 +238,7 @@ Note: with `DEBUG = False` Django no longer serves static files from
 `STATICFILES_DIRS` for you; the login/admin pages still work but may
 render unstyled. That is expected — the fix is correct.
 
-### Reproducing Flaw 5 — A07 Identification & Authentication Failures
+### Reproducing Flaw 5 - A07 Identification & Authentication Failures
 
 The flaw spans two files and both halves must be fixed together:
 
