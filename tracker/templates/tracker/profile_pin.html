@@ -1,0 +1,11 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Set PIN{% endblock %}
+{% block content %}
+<h2>Set / change your PIN</h2>
+<p>The PIN is required to view the team summary page.</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save PIN</button>
+</form>
+{% endblock %}

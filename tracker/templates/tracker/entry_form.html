@@ -1,0 +1,11 @@
+{% extends 'tracker/base.html' %}
+{% block title %}{{ mode }} entry{% endblock %}
+{% block content %}
+<h2>{{ mode }} time entry</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save</button>
+  <a href="{% url 'entry_list' %}">Cancel</a>
+</form>
+{% endblock %}

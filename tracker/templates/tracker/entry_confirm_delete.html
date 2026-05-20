@@ -1,0 +1,15 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Delete entry{% endblock %}
+{% block content %}
+<h2>Delete entry?</h2>
+<p>{{ entry.date }} — {{ entry.project }} ({{ entry.hours }}h)</p>
+{% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+<form method="post">
+  {% csrf_token %}
+  <p><label>Confirm with your PIN:
+    <input type="password" name="pin" required>
+  </label></p>
+  <button type="submit">Yes, delete</button>
+  <a href="{% url 'entry_detail' entry.pk %}">Cancel</a>
+</form>
+{% endblock %}

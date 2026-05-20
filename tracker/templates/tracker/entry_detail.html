@@ -1,0 +1,17 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Entry #{{ entry.pk }}{% endblock %}
+{% block content %}
+<h2>Time entry #{{ entry.pk }}</h2>
+<dl>
+  <dt>Owner</dt><dd>{{ entry.owner.username }}</dd>
+  <dt>Project</dt><dd>{{ entry.project }}</dd>
+  <dt>Hours</dt><dd>{{ entry.hours }}</dd>
+  <dt>Date</dt><dd>{{ entry.date }}</dd>
+  <dt>Description</dt><dd>{{ entry.description|linebreaksbr }}</dd>
+</dl>
+<p>
+  <a href="{% url 'entry_edit' entry.pk %}">Edit</a> |
+  <a href="{% url 'entry_delete' entry.pk %}">Delete</a> |
+  <a href="{% url 'entry_list' %}">Back to list</a>
+</p>
+{% endblock %}

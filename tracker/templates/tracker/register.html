@@ -1,0 +1,23 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<h2>Register</h2>
+{% if errors %}
+  <ul style="color:red">
+    {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+  </ul>
+{% endif %}
+<form method="post">
+  {% csrf_token %}
+  <p><label>Username:
+    <input name="username" value="{{ username }}" required>
+  </label></p>
+  <p><label>Password:
+    <input type="password" name="password1" required>
+  </label></p>
+  <p><label>Confirm password:
+    <input type="password" name="password2" required>
+  </label></p>
+  <button type="submit">Create account</button>
+</form>
+{% endblock %}

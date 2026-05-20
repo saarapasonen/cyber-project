@@ -1,0 +1,15 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Team summary{% endblock %}
+{% block content %}
+<h2>Team summary (staff only)</h2>
+<table border="1" cellpadding="6">
+  <thead><tr><th>User</th><th>Total hours</th></tr></thead>
+  <tbody>
+    {% for row in totals %}
+      <tr><td>{{ row.owner__username }}</td><td>{{ row.total_hours }}</td></tr>
+    {% empty %}
+      <tr><td colspan="2"><em>No entries logged yet.</em></td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
