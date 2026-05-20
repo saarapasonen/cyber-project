@@ -1,4 +1,4 @@
-# Worklog — Deliberately Vulnerable Django App
+# Worklog; Deliberately Vulnerable Django App
 
 A minimal hour-tracking Django app built for the **Cybersecurity Base -
 Course Project I** (University of Helsinki). It contains five intentional,
